@@ -2,7 +2,7 @@
 
 Gamepad controls for A-Frame.
 
-Demo: https://www.donmccurdy.com/aframe-gamepad-controls/
+Demo: https://donmccurdy.github.io/aframe-gamepad-controls/
 
 ## Overview
 
@@ -85,6 +85,16 @@ Example:
             gamepad-controls>
   </a-entity>
 </a-scene>
+```
+
+## Gear VR
+
+A-Frame supports the Gear VR controller with `gear-vr-controller`, but for Gear VR's without a controller, this component can be used to handle it's trackpad events.
+
+For a cursor-based setup, `downEvents` must be set to `gamepadbuttondown`. For example:
+
+```html
+<a-entity cursor="downEvents: gamepadbuttondown; upEvents: gamepadbuttonup;"></a-entity>
 ```
 
 ## Button Events
