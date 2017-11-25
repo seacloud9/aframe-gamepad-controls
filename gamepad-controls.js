@@ -35,6 +35,7 @@ module.exports = {
     lookEnabled:       { default: true },
     flyEnabled:        { default: false },
     invertAxisY:       { default: false },
+    invertAxisZ:       { default: false },
 
     // Constants
     easing:            { default: 20 },
@@ -128,7 +129,7 @@ module.exports = {
     }
 
     var movementVector = this.getMovementVector(dt);
-
+    if(this.data.invertAxisZ) movementVector.z = movementVector.z * -1 
     el.object3D.translateX(movementVector.x);
     el.object3D.translateY(movementVector.y);
     el.object3D.translateZ(movementVector.z);

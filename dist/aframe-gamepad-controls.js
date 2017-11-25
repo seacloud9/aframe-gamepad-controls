@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	// Browser distrubution of the A-Frame component.
@@ -57,9 +57,9 @@
 	}(window.AFRAME));
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Gamepad controls for A-Frame.
@@ -98,6 +98,7 @@
 	    lookEnabled:       { default: true },
 	    flyEnabled:        { default: false },
 	    invertAxisY:       { default: false },
+	    invertAxisZ:       { default: false },
 
 	    // Constants
 	    easing:            { default: 20 },
@@ -191,7 +192,7 @@
 	    }
 
 	    var movementVector = this.getMovementVector(dt);
-
+	    if(this.data.invertAxisZ) movementVector.z = movementVector.z * -1 
 	    el.object3D.translateX(movementVector.x);
 	    el.object3D.translateY(movementVector.y);
 	    el.object3D.translateZ(movementVector.z);
@@ -427,9 +428,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = Object.assign(function GamepadButton () {}, {
 		FACE_1: 0,
@@ -454,9 +455,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	function GamepadButtonEvent (type, index, details) {
 	  this.type = type;
@@ -468,5 +469,5 @@
 	module.exports = GamepadButtonEvent;
 
 
-/***/ }
+/***/ })
 /******/ ]);
