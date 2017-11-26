@@ -128,8 +128,7 @@ module.exports = {
       }
     }
 
-    var movementVector = this.getMovementVector(dt);
-    if(this.data.invertAxisZ) movementVector.z = movementVector.z * -1 
+    var movementVector = this.getMovementVector(dt); 
     el.object3D.translateX(movementVector.x);
     el.object3D.translateY(movementVector.y);
     el.object3D.translateZ(movementVector.z);
@@ -153,6 +152,7 @@ module.exports = {
       rotation.copy(this.el.getAttribute('rotation'));
       this.direction.copy(this.velocity);
       this.direction.multiplyScalar(dt / 1000);
+      if(this.data.invertAxisZ) this.direction.z = -this.direction.z
       if (!rotation) { return this.direction; }
       if (!this.data.flyEnabled) { rotation.x = 0; }
       euler.set(
@@ -216,6 +216,7 @@ module.exports = {
       if (Math.abs(lookVector.x) <= JOYSTICK_EPS) lookVector.x = 0;
       if (Math.abs(lookVector.y) <= JOYSTICK_EPS) lookVector.y = 0;
       if (this.data.invertAxisY) lookVector.y = -lookVector.y;
+      if(this.data.invertAxisZ) lookVector.z = -lookVector.z;
 
       // If external controls have been active more recently than gamepad,
       // and gamepad hasn't moved, don't overwrite the existing rotation.
